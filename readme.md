@@ -14,11 +14,11 @@ With this IOS app, users will be able to
 
 ### Wireframes
 
-![wireframes](./wireframes/1.png)
+<img src="./wireframes/1.png" width="300">
 
-![wireframes](./wireframes/2.png)
+<img src="./wireframes/2.png" width="300">
 
-![wireframes](./wireframes/3.png)
+<img src="./wireframes/3.png" width="300">
 
 ### Technologies & Technical Challenges
 
