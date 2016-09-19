@@ -12,13 +12,32 @@ import {
   View
 } from 'react-native';
 import Hi from './hi';
+import AppContainer from './frontend/components/app_container';
+import { Provider } from 'react-redux';
+import configureStore from './frontend/store/store';
+
+
+
+const Root = ({store}) => (
+	<Provider store={store}>
+		<AppContainer/>
+	</Provider>
+);
 
 
 class Words extends Component {
+
+  constructor(props) {
+    super(props);
+    this.store = configureStore();
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Hi/>
+        {/* <Hi/> */}
+        <Root store={this.store}/>
       </View>
     );
   }

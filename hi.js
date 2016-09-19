@@ -1,14 +1,12 @@
 import React from 'react';
+import * as _ from 'lodash';
 import { Text, TextInput, View } from 'react-native';
-import { Form, InputField,
-        Separator, SwitchField, LinkField ,
-        PickerField, DatePickerField
-      } from 'react-native-form-generator';
+import Button from 'react-native-button';
 
 class Hi extends React.Component {
 	constructor(props) {
 		super(props);
-		let words = new Array(5).fill([]);
+		let words = new Array(5).fill("");
 		this.state = {text: '', words};
 	}
 
@@ -16,14 +14,18 @@ class Hi extends React.Component {
 
 	updateText(text, idx) {
 
-		let word = this.state.words[idx];
-		this.setState({word: text});
+		let words = _.merge([], this.state.words);
+		words[idx] = text;
+		this.setState({words});
 
-		// debugger;
+	}
+
+	_handlePress() {
+		console.log(this.state.words);
 	}
 
 	render() {
-		console.log(this.state.words);
+
 		let words = this.state.words.map((word, idx) => {
 			let placeholder = `word ${idx}!`;
 			return (
@@ -40,11 +42,16 @@ class Hi extends React.Component {
 
 		});
 
-		// debugger;
 
 		return(
 			<View>
 				{words}
+				<Button
+				style={{fontSize: 20, color: '#607d8b'}}
+				styleDisabled={{color: 'red'}}
+				onPress={() => this._handlePress()}>
+				Press Me!
+			</Button>
 			</View>
 		);
 	}
