@@ -1,8 +1,8 @@
 export const WordConstants = {
-	TICK: 'TICK'
+	SUBMIT_WORDS: 'SUBMIT_WORDS'
 };
 
-export const tick = (quantization) => ({
-	type: WordConstants.TICK,
-	quantization
+export const submitWords = (words) => ({
+	type: WordConstants.SUBMIT_WORDS,
+	words
 });

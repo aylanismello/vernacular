@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import { Text, TextInput, View } from 'react-native';
 import Button from 'react-native-button';
 
-class Hi extends React.Component {
+class WordForm extends React.Component {
 	constructor(props) {
 		super(props);
 		let words = new Array(5).fill("");
@@ -22,6 +22,7 @@ class Hi extends React.Component {
 
 	_handlePress() {
 		console.log(this.state.words);
+		this.props.submitWords(this.state.words);
 	}
 
 	render() {
@@ -59,4 +60,4 @@ class Hi extends React.Component {
 
 
 
-export default Hi;
+export default WordForm;

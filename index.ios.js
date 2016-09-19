@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -11,7 +5,6 @@ import {
   Text,
   View
 } from 'react-native';
-import Hi from './hi';
 import AppContainer from './frontend/components/app_container';
 import { Provider } from 'react-redux';
 import configureStore from './frontend/store/store';
@@ -36,7 +29,6 @@ class Words extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <Hi/> */}
         <Root store={this.store}/>
       </View>
     );
