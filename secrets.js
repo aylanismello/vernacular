@@ -1,1 +1,0 @@
-YANDEX_API : `trnsl.1.1.20160918T223801Z.eaa84d85204ec253.b4eab8bdd8de2b10c4fba4bdc766ea9f7dd6876b`;
