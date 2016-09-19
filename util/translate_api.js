@@ -12,36 +12,36 @@
 // });
 
 
-const postEndpoint = `https://my-words-api.herokuapp.com/words`;
+const postEndpoint = `localhost:8080/api/words`;
 
 
 export const submitWords = (words) => {
 
-
-	// let payload = JSON.stringify({
-	// 	word: [
-	// 		'one', 'two', 'three', 'four', 'five'
-	// 	]
-	// });
-	let payload = JSON.stringify({a: 1, b: 2});
-
-	fetch(postEndpoint, ({
-	  method: 'POST',
-	  headers: {
-	    'Accept': 'application/json',
-	    'Content-Type': 'application/json',
-	  },
-	  body: payload
-	}))
-	.then(data => {
-		console.log(`got ${data}`);
-		console.log(`the payload: ${payload}`);
-		debugger;
-	})
-	.catch(error => {
-		console.log(`failed with ${error}`);
-	});
+	// console.log(words);
+	// const xhr = new XMLHttpRequest();
+	// xhr.open('GET', postEndpoint);
+	// xhr.send(null);
+	//
+	//
+	// xhr.onreadystatechange = () => {
+	//   var DONE = 4; // readyState 4 means the request is done.
+	//   var OK = 200; // status 200 is a successful return.
+	//   if (xhr.readyState === DONE) {
+	//     if (xhr.status === OK)
+	//       console.log(xhr.responseText); // 'This is the returned text.'
+	//     } else {
+	//       console.log('Error: ' + xhr.status); // An error occurred during the request.
+	//     }
+	//   }
+	// };
 
 
 
 };
+
+
+// { "title": "french 2", "wordSet":
+// [{"source": "hello", "destination": "salut"},
+// {"source": "bye", "destination": "adieu"},
+// {"source": "no worries", "destination": "pas de stress"},
+// {"source": "bread", "destination": "pain"}, {"source": "friend", "destination": "ami"} ]   }

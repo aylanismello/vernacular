@@ -7,7 +7,7 @@ class WordForm extends React.Component {
 	constructor(props) {
 		super(props);
 		let words = new Array(5).fill("");
-		this.state = {text: '', words};
+		this.state = {words, title: ''};
 	}
 
 
@@ -20,12 +20,29 @@ class WordForm extends React.Component {
 
 	}
 
+	updateTitle(title) {
+		this.setState({title});
+	}
+
 	_handlePress() {
-		console.log(this.state.words);
 		this.props.submitWords(this.state.words);
 	}
 
 	render() {
+
+
+		console.log(this.state);
+		let title = (
+			<View>
+				<Text>Title</Text>
+				<TextInput
+					style={{height: 40}}
+					placeholder="TITLE PLZ"
+					onChangeText={text => this.updateTitle(text)}
+					/>
+				</View>
+
+		);
 
 		let words = this.state.words.map((word, idx) => {
 			let placeholder = `word ${idx}!`;
@@ -46,6 +63,7 @@ class WordForm extends React.Component {
 
 		return(
 			<View>
+				{title}
 				{words}
 				<Button
 				style={{fontSize: 20, color: '#607d8b'}}
