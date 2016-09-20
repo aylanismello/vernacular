@@ -6,17 +6,17 @@ import Button from 'react-native-button';
 class WordForm extends React.Component {
 	constructor(props) {
 		super(props);
-		let words = new Array(5).fill("");
-		this.state = {words, title: ''};
+		let deck = new Array(5).fill("");
+		this.state = {deck, title: ''};
 	}
 
 
 
 	updateText(text, idx) {
 
-		let words = _.merge([], this.state.words);
-		words[idx] = text;
-		this.setState({words});
+		let deck = _.merge([], this.state.deck);
+		deck[idx] = text;
+		this.setState({deck});
 
 	}
 
@@ -25,7 +25,7 @@ class WordForm extends React.Component {
 	}
 
 	_handlePress() {
-		this.props.submitWords(this.state.words);
+		this.props.submitDeck(this.state.deck);
 	}
 
 	render() {
@@ -44,7 +44,7 @@ class WordForm extends React.Component {
 
 		);
 
-		let words = this.state.words.map((word, idx) => {
+		let deck = this.state.deck.map((word, idx) => {
 			let placeholder = `word ${idx}!`;
 			return (
 				<View key={idx}>
@@ -64,7 +64,7 @@ class WordForm extends React.Component {
 		return(
 			<View>
 				{title}
-				{words}
+				{deck}
 				<Button
 				style={{fontSize: 20, color: '#607d8b'}}
 				styleDisabled={{color: 'red'}}

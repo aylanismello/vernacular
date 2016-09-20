@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import WordReducer from './word_reducer';
+import DeckReducer from './deck_reducer';
 
 const RootReducer = combineReducers({
-	word: WordReducer
+	deck: DeckReducer
 });
 
 export default RootReducer;

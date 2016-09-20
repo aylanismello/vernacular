@@ -1,5 +1,15 @@
 ## Words
 
+#### //Running App for Development
+
+- `npm install --save`
+- `node server/index.js`
+- `react-native run-ios --simulator`
+
+Install react-native if you haven't already
+- `npm install -g react-native`
+
+
 ### Background
 
 There are many apps out there for reviewing vocabulary flashcards. My app specializes on short review bursts (limit of card sets === 5). Additionally, my app is focused on foreign language vocabulary.
@@ -31,23 +41,24 @@ This app will be implemented using React Native to bridge the gap between the we
 - `/words #GET` get all wordCardSets  from DB
 
 #### MongoDB Schema
-
 `
-{wordCardSet:
-	[{source: 'hello', dest: 'bonjour'}, {}...],
-	id: '9232k3j3fdf'
+{deck: 
+	{
+		title: 'french 1'
+		[{source: 'hello', dest: 'bonjour'}, {}...],
+		id: '9232k3j3fdf'
+	}
 }
 `
 
 #### Redux State
-
 `
-{wordCardSets: [
+{decks: [
 	[{source: 'hello', dest: 'bonjour'}, {}...],
 	[{source: 'bye', dest: 'adieu'}, {}...]
 	],
-	wordsCardSetIdx: 0,
-	wordCardIdx: 0
+	deckIdx: 0,
+	cardIdx: 0
 }
 `
 
@@ -65,8 +76,8 @@ Side technologies:
 
 **Day 1**: Complete ExpressJS CRUD API.
 
-- Connect Express POST request to yandex API to succesfully create wordSets.
-- Test GET request for all wordSets in Chrome by hitting API endpoint repeatedly.
+- Connect Express POST request to yandex API to succesfully create decks.
+- Test GET request for all decks in Chrome by hitting API endpoint repeatedly.
 - Test extensively.
 
 **Day 2**: Make front end connect to DB and post, read words correctly.
@@ -76,10 +87,10 @@ Side technologies:
 
 **Day 3**: Make welcome screen with all wordSets from DB.
 
-- Home screen should display all wordSets.
-- Infinite scroll to go down and view the available sets.
+- Home screen should display all decks.
+- Infinite scroll to go down and view the available decks.
 
 **Day 4**: Flash card view.
 
-- Use SwipeScreen React Native Component to implement the View layer of each fo the wordSet's word Cards.
+- Use SwipeScreen React Native Component to implement the View layer of each of the deck's cards.
 - Make gameplay logic in React/Redux for each Card.

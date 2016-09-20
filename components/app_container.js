@@ -3,10 +3,8 @@ import App from './app';
 import { tick } from '../actions/word_actions';
 
 const mapStateToProps = (state, ownProps) => {
-
-
 	return {
-		words: state.word.words
+		deck: state.deck
 	};
 };
 

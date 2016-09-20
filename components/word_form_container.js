@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
 import WordForm from './word_form';
-import { submitWords } from '../actions/word_actions';
+import { submitDeck } from '../actions/deck_actions';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-		words: state.word.words
+		deck: state.deck
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		submitWords: words => dispatch(submitWords(words))
+		submitDeck: deck => dispatch(submitDeck(deck))
 	};
 };
 

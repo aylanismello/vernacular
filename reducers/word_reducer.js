@@ -2,7 +2,9 @@ import { WordConstants } from '../actions/word_actions';
 import * as _ from 'lodash';
 
 const defaultWord = Object.freeze({
-	words: new Array(5).fill("")
+	decks: [],
+	deckIdx: 0,
+	cardIdx: 0
 });
 
 const WordReducer = (state=defaultWord, action) => {
