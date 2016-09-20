@@ -7,8 +7,23 @@ class App extends React.Component {
 
 	constructor(props) {
 		super(props);
+		this.state = {
+			componentSelected: "DecksIndex"
+		};
+
+		this.redirectToCreateDeck = this.redirectToCreateDeck.bind(this);
+		this.redirectToDecksIndex = this.redirectToDecksIndex.bind(this);
 	}
 
+	redirectToCreateDeck(event) {
+		event.preventDefault();
+		this.setState({componentSelected: "DeckForm"});
+	}
+
+	redirectToDecksIndex(event) {
+		event.preventDefault();
+		this.setState({componentSelected: "DecksIndex"});
+	}
 
 	componentDidMount() {
 		this.props.receiveDecks();
@@ -16,11 +31,19 @@ class App extends React.Component {
 
 
 	render() {
-		return (
-		<View>
-			<DecksIndexContainer/>
-		</View>
-		);
+		if (this.state.componentSelected === "DecksIndex") {
+			return (
+				<View>
+					<DecksIndexContainer redirectToCreateDeck={this.redirectToCreateDeck}/>
+				</View>
+			);
+		} else if (this.state.componentSelected === "DeckForm") {
+			return (
+				<View>
+					<DeckFormContainer redirectToDecksIndex={this.redirectToDecksIndex} />
+				</View>
+			);
+		}
 	}
 
 }

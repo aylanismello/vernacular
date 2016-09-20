@@ -5,7 +5,8 @@ import {
   ActivityIndicator,
   StyleSheet,
   ScrollView,
-  ListView
+  ListView,
+  Navigator
 } from 'react-native';
 import Button from 'react-native-button';
 import Deck from './deck';
@@ -30,7 +31,7 @@ class DecksIndex extends React.Component {
         <View>
           <Text style={styles.appHeader}>Semper</Text>
           <View style={styles.addDeckButtonContainer}>
-            <Button style={styles.addDeck}>+Add Deck</Button>
+            <Button style={styles.addDeck} onPress={this.props.redirectToCreateDeck}>+Add Deck</Button>
           </View>
           <ScrollView contentContainerStyle={styles.container}>
             {decksArr}
