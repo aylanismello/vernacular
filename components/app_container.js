@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import App from './app';
-import { tick } from '../actions/word_actions';
+import { receiveDecks } from '../actions/deck_actions';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
@@ -8,7 +8,15 @@ const mapStateToProps = (state, ownProps) => {
 	};
 };
 
+const mapDispatchToProps = dispatch => {
+
+	return {
+		receiveDecks: () => dispatch(receiveDecks())
+	};
+};
+
 
 export default connect (
-	mapStateToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(App);

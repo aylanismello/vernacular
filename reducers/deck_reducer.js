@@ -14,6 +14,9 @@ const DeckReducer = (state=defaultDeck, action) => {
 			newState = _.merge({}, state, {deckIdx: state.decks.length});
 			newState.decks.push(action.deck);
 			return newState;
+		case DeckConstants.RECEIVE_DECKS:
+			newState = _.merge({}, state, {decks: action.decks});
+			return newState;
 		default:
 			return state;
 	}
