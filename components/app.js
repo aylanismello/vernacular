@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, TextInput, View } from 'react-native';
-import WordFormContainer from './word_form_container';
+import DeckFormContainer from './deck_form/deck_form_container';
+import DecksIndexContainer from './decks/decks_index_container';
 
 class App extends React.Component {
 
@@ -17,7 +18,7 @@ class App extends React.Component {
 	render() {
 		return (
 		<View>
-			<WordFormContainer/>
+			<DecksIndexContainer/>
 		</View>
 		);
 	}

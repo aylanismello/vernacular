@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import { Text, TextInput, View } from 'react-native';
 import Button from 'react-native-button';
 
-class WordForm extends React.Component {
+class DeckForm extends React.Component {
 	constructor(props) {
 		super(props);
 		let deck = new Array(5).fill("");
@@ -78,4 +78,4 @@ class WordForm extends React.Component {
 
 
 
-export default WordForm;
+export default DeckForm;
