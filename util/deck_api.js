@@ -1,5 +1,5 @@
-// const postEndpoint = `https://my-words-api.herokuapp.com/api/words`;
-const postEndpoint = `http://localhost:8080/api/words`;
+const postEndpoint = `https://my-words-api.herokuapp.com/api/words`;
+// const postEndpoint = `http://localhost:8080/api/words`;
 
 
 const err = errors => console.log(`got errors: ${errors}`);
