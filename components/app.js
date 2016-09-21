@@ -36,19 +36,25 @@ class App extends React.Component {
 
 	render() {
 
-		if (this.state.componentSelected === "DecksIndex") {
+		// if (this.state.componentSelected === "DecksIndex") {
+		// 	return (
+		// 		<View>
+		// 			<DecksIndexContainer redirectToCreateDeck={this.redirectToCreateDeck}/>
+		// 		</View>
+		// 	);
+		// } else if (this.state.componentSelected === "DeckForm") {
+		// 	return (
+		// 		<View>
+		// 			<DeckFormContainer redirectToDecksIndex={this.redirectToDecksIndex} />
+		// 		</View>
+		// 	);
+		// }
+
 			return (
 				<View>
-					<DecksIndexContainer redirectToCreateDeck={this.redirectToCreateDeck}/>
+					<DecksIndexContainer navigator={this.props.navigator}/>
 				</View>
 			);
-		} else if (this.state.componentSelected === "DeckForm") {
-			return (
-				<View>
-					<DeckFormContainer redirectToDecksIndex={this.redirectToDecksIndex} />
-				</View>
-			);
-		}
 	}
 
 }

@@ -3,7 +3,8 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  NavigatorIOS
 } from 'react-native';
 import AppContainer from './components/app_container';
 import { Provider } from 'react-redux';
@@ -13,7 +14,16 @@ import configureStore from './store/store';
 
 const Root = ({store}) => (
 	<Provider store={store}>
-		<AppContainer/>
+		<NavigatorIOS
+      barTintColor="#fff"
+      tintColor="#4891C0"
+      titleTextColor="#4891C0"
+      initialRoute={{
+        component: AppContainer,
+        title: "Semper"
+      }}
+      style={{flex: 1}}
+    />
 	</Provider>
 );
 
@@ -28,9 +38,7 @@ class Words extends Component {
 
   render() {
     return (
-      <View>
         <Root store={this.store}/>
-      </View>
     );
   }
 }
