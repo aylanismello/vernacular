@@ -57,7 +57,7 @@ class DeckForm extends React.Component {
 
 
 		return(
-			<View>
+			<View style={{marginTop: 50}}>
 				{title}
 				<Button onPress={this.props.redirectToDecksIndex}>Back to Decks</Button>
 				{deck}

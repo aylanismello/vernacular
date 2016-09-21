@@ -10,10 +10,22 @@ import {
 } from 'react-native';
 import Button from 'react-native-button';
 import Deck from './deck';
+import DeckFormContainer from '../deck_form/deck_form_container';
 
 class DecksIndex extends React.Component {
   constructor(props) {
     super(props);
+
+    this._redirectToCreateDeck = this._redirectToCreateDeck.bind(this);
+    this._redirectToDeck = this._redirectToDeck.bind(this);
+  }
+
+  _redirectToCreateDeck() {
+    this.props.navigator.push({component: DeckFormContainer, title: "Create Deck"});
+  }
+
+  _redirectToDeck(deck) {
+    this.props.navigator.push({component: Deck, title: deck.title, passProps: { deck: deck}});
   }
 
   render() {
@@ -22,7 +34,7 @@ class DecksIndex extends React.Component {
         return (
           <View key={index} style={styles.indexDeckContainer}>
             <Text style={styles.deckHeader}>{deck.title}</Text>
-            <Button style={styles.practiceLink}>Practice</Button>
+            <Button style={styles.practiceLink} onPress={this._redirectToDeck.bind(this, deck)}>Practice</Button>
           </View>
         );
       });
@@ -31,7 +43,7 @@ class DecksIndex extends React.Component {
         <View>
           <Text style={styles.appHeader}>Semper</Text>
           <View style={styles.addDeckButtonContainer}>
-            <Button style={styles.addDeck} onPress={this.props.redirectToCreateDeck}>+Add Deck</Button>
+            <Button style={styles.addDeck} onPress={this._redirectToCreateDeck}>+Add Deck</Button>
           </View>
           <ScrollView contentContainerStyle={styles.container}>
             {decksArr}

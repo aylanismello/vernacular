@@ -11,7 +11,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
 
 	return {
-		// receiveDecks: () => dispatch(receiveDecks())
 		getDecks: () => dispatch(getDecks())
 	};
 };
