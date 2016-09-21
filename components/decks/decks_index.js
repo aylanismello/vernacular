@@ -9,7 +9,7 @@ import {
   Navigator
 } from 'react-native';
 import Button from 'react-native-button';
-import Deck from './deck';
+import DeckMenu from '../deck_menu/deck_menu';
 import DeckFormContainer from '../deck_form/deck_form_container';
 
 class DecksIndex extends React.Component {
@@ -21,11 +21,11 @@ class DecksIndex extends React.Component {
   }
 
   _redirectToCreateDeck() {
-    this.props.navigator.push({component: DeckFormContainer, title: "Create Deck"});
+    this.props.nav.push({component: DeckFormContainer, title: "Create Deck"});
   }
 
   _redirectToDeck(deck) {
-    this.props.navigator.push({component: Deck, title: deck.title, passProps: { deck: deck}});
+    this.props.nav.push({component: DeckMenu, title: deck.title, passProps: { deck: deck}});
   }
 
   render() {

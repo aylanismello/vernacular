@@ -6,7 +6,7 @@ import {
 import Swiper from 'react-native-swiper';
 import Button from 'react-native-button';
 
-class Deck extends React.Component {
+class DeckMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,4 +25,4 @@ class Deck extends React.Component {
   }
 }
 
-export default Deck;
+export default DeckMenu;
