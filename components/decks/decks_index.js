@@ -41,13 +41,12 @@ class DecksIndex extends React.Component {
 
       return (
         <View>
-          <Text style={styles.appHeader}>Semper</Text>
-          <View style={styles.addDeckButtonContainer}>
-            <Button style={styles.addDeck} onPress={this._redirectToCreateDeck}>+Add Deck</Button>
-          </View>
           <ScrollView contentContainerStyle={styles.container}>
             {decksArr}
           </ScrollView>
+          <View style={styles.addDeckButtonContainer}>
+            <Button style={styles.addDeck} onPress={this._redirectToCreateDeck}>+Add Deck</Button>
+          </View>
         </View>
       );
     } else {
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#D4E9F2',
-    height: 300
+    height: 500
   },
   appHeader: {
     fontSize: 20,
@@ -109,7 +108,8 @@ const styles = StyleSheet.create({
   addDeckButtonContainer: {
     flex: 0,
     flexDirection: 'row',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    bottom: 0
   },
   addDeck: {
     backgroundColor: '#fff',
