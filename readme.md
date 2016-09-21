@@ -10,6 +10,8 @@ Install react-native if you haven't already
 - `npm install -g react-native`
 
 
+Made by Aylan Mello and [Davin Kim](https://github.com/Davinism)
+
 ### Background
 
 There are many apps out there for reviewing vocabulary flashcards. My app specializes on short review bursts (limit of card sets === 5). Additionally, my app is focused on foreign language vocabulary.
@@ -42,7 +44,7 @@ This app will be implemented using React Native to bridge the gap between the we
 
 #### MongoDB Schema
 `
-{deck: 
+{deck:
 	{
 		title: 'french 1'
 		[{source: 'hello', dest: 'bonjour'}, {}...],
