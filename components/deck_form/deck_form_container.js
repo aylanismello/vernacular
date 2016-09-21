@@ -1,16 +1,18 @@
 import { connect } from 'react-redux';
 import DeckForm from './deck_form';
-import { submitDeck } from '../../actions/deck_actions';
+import { submitDeck, deleteDeck } from '../../actions/deck_actions';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-		deck: state.deck
+		decks: state.deck.decks
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		submitDeck: deck => dispatch(submitDeck(deck))
+		submitDeck: deck => dispatch(submitDeck(deck)),
+		deleteDeck: deckId => dispatch(deleteDeck(deckId))
+
 	};
 };
 

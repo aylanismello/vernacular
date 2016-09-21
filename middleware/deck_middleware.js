@@ -3,7 +3,8 @@ import {
   submitDeck,
   getDecks,
   receiveDecks,
-  receiveDeck } from '../actions/deck_actions';
+  receiveDeck,
+  removeDeck } from '../actions/deck_actions';
 
 import * as API from '../util/deck_api';
 
@@ -18,16 +19,22 @@ const DeckMiddleware = ({getState, dispatch}) => next => action => {
     dispatch(receiveDeck(JSON.parse(deck)));
   };
 
+  const successDeleteDeck = deckId => {
+    dispatch(removeDeck(deckId));
+  };
+
 
 
 
    switch (action.type) {
   	 	case DeckConstants.SUBMIT_DECK:
-
   			API.submitDeck(action.deck, successGetDeck);
   			return next(action);
       case DeckConstants.GET_DECKS:
         API.getDecks(successGetDecks);
+        return next(action);
+      case DeckConstants.DELETE_DECK:
+        API.deleteDeck(action.deckId, successDeleteDeck);
         return next(action);
   	 	default:
   			return next(action);

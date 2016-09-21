@@ -17,6 +17,11 @@ const DeckReducer = (state=defaultDeck, action) => {
 		case DeckConstants.RECEIVE_DECKS:
 			newState = _.merge({}, state, {decks: action.decks});
 			return newState;
+		case DeckConstants.REMOVE_DECK:
+			newState = _.merge({}, state);
+			let delIdx = state.decks.findIndex(deck => deck._id === action.deckId);
+			newState.decks.splice(delIdx, 1);
+			return newState;
 		default:
 			return state;
 	}

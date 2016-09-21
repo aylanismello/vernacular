@@ -31,6 +31,7 @@ class App extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
+		
 	}
 
 	render() {

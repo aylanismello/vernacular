@@ -6,6 +6,7 @@ import Button from 'react-native-button';
 class DeckForm extends React.Component {
 	constructor(props) {
 		super(props);
+		this.deleteFirstDeck = this.deleteFirstDeck.bind(this);
 		let deck = new Array(5).fill("");
 		this.state = {deck, title: '', to: 'ko'};
 	}
@@ -22,9 +23,15 @@ class DeckForm extends React.Component {
 		this.setState({title});
 	}
 
+	deleteFirstDeck(e) {
+		e.preventDefault();
+		this.props.deleteDeck(this.props.decks[0]._id);
+	}
+
 	_handlePress() {
 		this.props.submitDeck(this.state);
 	}
+
 
 	render() {
 		let title = (
@@ -60,6 +67,7 @@ class DeckForm extends React.Component {
 			<View>
 				{title}
 				<Button onPress={this.props.redirectToDecksIndex}>Back to Decks</Button>
+				<Button onPress={this.deleteFirstDeck}>Delete First Deck</Button>
 				{deck}
 				<Button
 				style={{fontSize: 20, color: '#607d8b'}}
