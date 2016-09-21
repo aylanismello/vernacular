@@ -7,14 +7,14 @@ export const DeckConstants = {
 
 
 const fakeDecks = [
-	{title: "french",
+	{title: "French",
 		deck: [{"source": "hello", "dest": "salut"},
 		{"source": "bye", "dest": "adieu"},
 		{"source": "no worries", "dest": "pas de stress"},
 		{"source": "bread", "dest": "pain"},
 		{"source": "friend", "dest": "ami"} ] },
 
-	{title: "korean",
+	{title: "Korean",
 		deck: [{"source": "hello", "dest": "안녕"},
 		{"source": "bye", "dest": "안녕"},
 		{"source": "soju", "dest": "소주"},

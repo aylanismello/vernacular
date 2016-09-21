@@ -59,6 +59,7 @@ class DeckForm extends React.Component {
 		return(
 			<View>
 				{title}
+				<Button onPress={this.props.redirectToDecksIndex}>Back to Decks</Button>
 				{deck}
 				<Button
 				style={{fontSize: 20, color: '#607d8b'}}
