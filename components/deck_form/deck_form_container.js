@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import WordForm from './word_form';
-import { submitDeck } from '../actions/deck_actions';
+import DeckForm from './deck_form';
+import { submitDeck } from '../../actions/deck_actions';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
@@ -18,4 +18,4 @@ const mapDispatchToProps = dispatch => {
 export default connect (
 	mapStateToProps,
 	mapDispatchToProps
-)(WordForm);
+)(DeckForm);

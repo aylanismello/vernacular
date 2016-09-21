@@ -3,14 +3,12 @@ import * as _ from 'lodash';
 import { Text, TextInput, View } from 'react-native';
 import Button from 'react-native-button';
 
-class WordForm extends React.Component {
+class DeckForm extends React.Component {
 	constructor(props) {
 		super(props);
 		let deck = new Array(5).fill("");
-		this.state = {deck, title: ''};
+		this.state = {deck, title: '', to: 'ko'};
 	}
-
-
 
 	updateText(text, idx) {
 
@@ -25,13 +23,10 @@ class WordForm extends React.Component {
 	}
 
 	_handlePress() {
-		this.props.submitDeck(this.state.deck);
+		this.props.submitDeck(this.state);
 	}
 
 	render() {
-
-
-		console.log(this.state);
 		let title = (
 			<View>
 				<Text>Title</Text>
@@ -78,4 +73,4 @@ class WordForm extends React.Component {
 
 
 
-export default WordForm;
+export default DeckForm;

@@ -1,7 +1,8 @@
 export const DeckConstants = {
 	SUBMIT_DECK: 'SUBMIT_DECK',
 	GET_DECKS: 'GET_DECKS',
-	RECEIVE_DECKS: 'RECEIVE_DECKS'
+	RECEIVE_DECKS: 'RECEIVE_DECKS',
+	RECEIVE_DECK: 'RECEIVE_DECK'
 };
 
 
@@ -27,12 +28,16 @@ export const submitDeck = (deck) => ({
 	deck
 });
 
-export const getDecks = decks => ({
-	type: DeckConstants.GET_DECKS,
-	decks
+export const getDecks = () => ({
+	type: DeckConstants.GET_DECKS
 });
 
 export const receiveDecks = (decks=fakeDecks) => ({
 	type: DeckConstants.RECEIVE_DECKS,
 	decks
+});
+
+export const receiveDeck = (deck) => ({
+	type: DeckConstants.RECEIVE_DECK,
+	deck
 });

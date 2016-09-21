@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TextInput, View } from 'react-native';
-import WordFormContainer from './word_form_container';
+import DeckFormContainer from './deck_form/deck_form_container';
 
 class App extends React.Component {
 
@@ -10,14 +10,16 @@ class App extends React.Component {
 
 
 	componentDidMount() {
-		this.props.receiveDecks();
+		this.props.getDecks();
 	}
 
+	componentWillReceiveProps(nextProps) {
+	}
 
 	render() {
 		return (
 		<View>
-			<WordFormContainer/>
+			<DeckFormContainer/>
 		</View>
 		);
 	}
