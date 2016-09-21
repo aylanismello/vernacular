@@ -12,6 +12,8 @@ class App extends React.Component {
 			componentSelected: "DecksIndex"
 		};
 
+		this.props.setNav(this.props.navigator);
+
 		this.redirectToCreateDeck = this.redirectToCreateDeck.bind(this);
 		this.redirectToDecksIndex = this.redirectToDecksIndex.bind(this);
 	}
@@ -31,7 +33,7 @@ class App extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		
+
 	}
 
 	render() {
@@ -52,7 +54,7 @@ class App extends React.Component {
 
 			return (
 				<View>
-					<DecksIndexContainer navigator={this.props.navigator}/>
+					<DecksIndexContainer />
 				</View>
 			);
 	}

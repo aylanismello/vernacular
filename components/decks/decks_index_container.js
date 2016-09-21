@@ -4,7 +4,8 @@ import { receiveDecks } from '../../actions/deck_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    decks: state.deck.decks
+    decks: state.deck.decks,
+    nav: state.nav.nav
   };
 };
 

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import App from './app';
 import { getDecks } from '../actions/deck_actions';
+import { setNav } from '../actions/nav_actions';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
@@ -11,7 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
 
 	return {
-		getDecks: () => dispatch(getDecks())
+		getDecks: () => dispatch(getDecks()),
+		setNav: (nav) => dispatch(setNav(nav))
 	};
 };
 

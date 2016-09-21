@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Text,
   View,
-  NavigatorIOS
+  NavigatorIOS,
+  Navigator
 } from 'react-native';
 import AppContainer from './components/app_container';
 import { Provider } from 'react-redux';
@@ -15,7 +16,7 @@ import configureStore from './store/store';
 const Root = ({store}) => (
 	<Provider store={store}>
 		<NavigatorIOS
-      barTintColor="#fff"
+      barTintColor="#F5F5F5"
       tintColor="#4891C0"
       titleTextColor="#4891C0"
       initialRoute={{
@@ -38,7 +39,7 @@ class Words extends Component {
 
   render() {
     return (
-        <Root store={this.store}/>
+      <Root store={this.store}/>
     );
   }
 }

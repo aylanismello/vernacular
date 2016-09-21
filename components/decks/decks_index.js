@@ -9,7 +9,7 @@ import {
   Navigator
 } from 'react-native';
 import Button from 'react-native-button';
-import Deck from './deck';
+import DeckMenu from '../deck_menu/deck_menu';
 import DeckFormContainer from '../deck_form/deck_form_container';
 
 class DecksIndex extends React.Component {
@@ -21,11 +21,11 @@ class DecksIndex extends React.Component {
   }
 
   _redirectToCreateDeck() {
-    this.props.navigator.push({component: DeckFormContainer, title: "Create Deck"});
+    this.props.nav.push({component: DeckFormContainer, title: "Create Deck"});
   }
 
   _redirectToDeck(deck) {
-    this.props.navigator.push({component: Deck, title: deck.title, passProps: { deck: deck}});
+    this.props.nav.push({component: DeckMenu, title: deck.title, passProps: { deck: deck}});
   }
 
   render() {
@@ -41,13 +41,12 @@ class DecksIndex extends React.Component {
 
       return (
         <View>
-          <Text style={styles.appHeader}>Semper</Text>
-          <View style={styles.addDeckButtonContainer}>
-            <Button style={styles.addDeck} onPress={this._redirectToCreateDeck}>+Add Deck</Button>
-          </View>
           <ScrollView contentContainerStyle={styles.container}>
             {decksArr}
           </ScrollView>
+          <View style={styles.addDeckButtonContainer}>
+            <Button style={styles.addDeck} onPress={this._redirectToCreateDeck}>+Add Deck</Button>
+          </View>
         </View>
       );
     } else {
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#D4E9F2',
-    height: 300
+    height: 500
   },
   appHeader: {
     fontSize: 20,
@@ -109,7 +108,8 @@ const styles = StyleSheet.create({
   addDeckButtonContainer: {
     flex: 0,
     flexDirection: 'row',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    bottom: 0
   },
   addDeck: {
     backgroundColor: '#fff',
