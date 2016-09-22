@@ -30,7 +30,6 @@ class DeckMenu extends React.Component {
         <Button>Play</Button>
         <Button>Review</Button>
         <Button onPress={this._redirectToSettings}>Settings</Button>
-        <Button>Delete This Deck</Button>
       </View>
     );
   }
