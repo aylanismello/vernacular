@@ -27,6 +27,12 @@ class DeckForm extends React.Component {
 		// this.deleteFirstDeck = this.deleteFirstDeck.bind(this);
 		let deck = new Array(1).fill("");
 		this.state = {deck, title: '', to: 'Japanese', height: 650};
+
+		this.updateText = this.updateText.bind(this);
+		this.updateTitle = this.updateTitle.bind(this);
+		this.updateTo = this.updateTo.bind(this);
+		this._addMoreWordsInput = this._addMoreWordsInput.bind(this);
+		this._handlePress = this._handlePress.bind(this);
 	}
 
 	updateText(text, idx) {
@@ -49,6 +55,16 @@ class DeckForm extends React.Component {
 	// 	e.preventDefault();
 	// 	this.props.deleteDeck(this.props.decks[0]._id);
 	// }
+
+	_addMoreWordsInput(event) {
+		event.preventDefault();
+		const currentDeck = [];
+		this.state.deck.forEach((word) => {
+			currentDeck.push(word);
+		});
+		currentDeck.push("");
+		this.setState({deck: currentDeck});
+	}
 
 	_handlePress() {
 		const requestBody = {
@@ -110,10 +126,15 @@ class DeckForm extends React.Component {
 					</PickerIOS>
 					<Text style={styles.wordsPrompt}>Enter words that you want translated:</Text>
 					{deck}
+					<View style={styles.moreWordsContainer}>
+						<Button
+							style={styles.moreWords}
+							onPress={(event) => this._addMoreWordsInput(event)}>+</Button>
+					</View>
 					<Button
-					style={{fontSize: 20, color: '#607d8b'}}
-					styleDisabled={{color: 'red'}}
-					onPress={() => this._handlePress()}>
+						style={{fontSize: 20, color: '#607d8b'}}
+						styleDisabled={{color: 'red'}}
+						onPress={() => this._handlePress()}>
 						Press Me!
 					</Button>
 				</ScrollView>
@@ -159,6 +180,19 @@ const styles = StyleSheet.create({
 		padding: 5,
 		width: 250,
 		margin: 5
+	},
+	moreWordsContainer: {
+		flex: 0,
+		justifyContent: 'center',
+		flexDirection: 'row'
+	},
+	moreWords: {
+		color: "#fff",
+		backgroundColor: "#4891C0",
+		width: 50,
+		paddingBottom: 8,
+		fontSize: 30,
+		borderRadius: 5
 	}
 });
 
