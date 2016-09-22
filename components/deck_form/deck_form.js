@@ -25,7 +25,7 @@ class DeckForm extends React.Component {
 	constructor(props) {
 		super(props);
 		let deck = new Array(1).fill("");
-		this.state = {deck, title: '', to: 'Japanese', height: 600};
+		this.state = {deck, title: '', to: 'Japanese', height: 600, postDisabled: true};
 
 		this.updateText = this.updateText.bind(this);
 		this.updateTitle = this.updateTitle.bind(this);
