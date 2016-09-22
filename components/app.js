@@ -32,10 +32,6 @@ class App extends React.Component {
 		this.props.getDecks();
 	}
 
-	componentWillReceiveProps(nextProps) {
-
-	}
-
 	render() {
 
 		// if (this.state.componentSelected === "DecksIndex") {

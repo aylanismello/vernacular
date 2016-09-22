@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import DecksIndex from './decks_index';
-import { receiveDecks } from '../../actions/deck_actions';
+import { receiveDecks, updateDeckIdx } from '../../actions/deck_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -11,7 +11,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    receiveDecks: () => dispatch(receiveDecks())
+    receiveDecks: () => dispatch(receiveDecks()),
+    updateDeckIdx: deckIdx => dispatch(updateDeckIdx(deckIdx))
   };
 };
 

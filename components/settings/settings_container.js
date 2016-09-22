@@ -1,19 +1,18 @@
 import { connect } from 'react-redux';
-import DeckForm from './deck_form';
-import { submitDeck, deleteDeck } from '../../actions/deck_actions';
+import Settings from './settings';
+import { deleteDeck } from '../../actions/deck_actions';
 
 const mapStateToProps = (state, ownProps) => {
+	let deckIdx = state.deck.deckIdx;
 	return {
-		decks: state.deck.decks,
+		deckMongoId: state.deck.decks[deckIdx]._id,
 		nav: state.nav.nav
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		submitDeck: deck => dispatch(submitDeck(deck)),
 		deleteDeck: deckId => dispatch(deleteDeck(deckId))
-
 	};
 };
 
@@ -21,4 +20,4 @@ const mapDispatchToProps = dispatch => {
 export default connect (
 	mapStateToProps,
 	mapDispatchToProps
-)(DeckForm);
+)(Settings);

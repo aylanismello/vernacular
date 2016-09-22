@@ -2,6 +2,7 @@ import React from 'react';
 import * as _ from 'lodash';
 import { Text, TextInput, View } from 'react-native';
 import Button from 'react-native-button';
+import DeckMenuContainer from '../deck_menu/deck_menu_container';
 
 class DeckForm extends React.Component {
 	constructor(props) {
@@ -30,6 +31,8 @@ class DeckForm extends React.Component {
 
 	_handlePress() {
 		this.props.submitDeck(this.state);
+		this.props.nav.push({component: DeckMenuContainer, title: this.state.title});
+
 	}
 
 

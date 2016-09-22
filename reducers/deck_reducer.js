@@ -10,6 +10,9 @@ const defaultDeck = Object.freeze({
 const DeckReducer = (state=defaultDeck, action) => {
 	let newState;
 	switch (action.type) {
+		case DeckConstants.UPDATE_DECK_IDX:
+			newState = _.merge({}, state, {deckIdx: action.deckIdx});
+			return newState;
 		case DeckConstants.RECEIVE_DECK:
 			newState = _.merge({}, state, {deckIdx: state.decks.length});
 			newState.decks.push(action.deck);
