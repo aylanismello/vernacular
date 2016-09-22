@@ -16,7 +16,7 @@ import configureStore from './store/store';
 const Root = ({store}) => (
 	<Provider store={store}>
 		<NavigatorIOS
-      barTintColor="#F5F5F5"
+      barTintColor="#fff"
       tintColor="#4891C0"
       titleTextColor="#4891C0"
       initialRoute={{
