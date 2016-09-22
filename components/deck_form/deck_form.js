@@ -24,7 +24,6 @@ const LANGUAGES = {
 class DeckForm extends React.Component {
 	constructor(props) {
 		super(props);
-		// this.deleteFirstDeck = this.deleteFirstDeck.bind(this);
 		let deck = new Array(1).fill("");
 		this.state = {deck, title: '', to: 'Japanese', height: 600};
 
@@ -50,11 +49,6 @@ class DeckForm extends React.Component {
 	updateTo(language) {
 		this.setState({to: language});
 	}
-
-	// deleteFirstDeck(e) {
-	// 	e.preventDefault();
-	// 	this.props.deleteDeck(this.props.decks[0]._id);
-	// }
 
 	_addMoreWordsInput(event) {
 		event.preventDefault();
