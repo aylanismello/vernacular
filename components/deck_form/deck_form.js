@@ -26,7 +26,7 @@ class DeckForm extends React.Component {
 		super(props);
 		// this.deleteFirstDeck = this.deleteFirstDeck.bind(this);
 		let deck = new Array(1).fill("");
-		this.state = {deck, title: '', to: 'Japanese', height: 650};
+		this.state = {deck, title: '', to: 'Japanese', height: 600};
 
 		this.updateText = this.updateText.bind(this);
 		this.updateTitle = this.updateTitle.bind(this);
@@ -63,6 +63,9 @@ class DeckForm extends React.Component {
 			currentDeck.push(word);
 		});
 		currentDeck.push("");
+		this.refs.wordInput.measure((x, y, width, height, pageX, pageY) => {
+			this.setState({height: this.state.height + height});
+		});
 		this.setState({deck: currentDeck});
 	}
 
@@ -91,16 +94,34 @@ class DeckForm extends React.Component {
 		);
 
 		let deck = this.state.deck.map((word, idx) => {
-			return (
-				<View key={idx} style={{flex: 0, flexDirection: 'row', justifyContent: 'center'}}>
-					<TextInput
+			if (idx === 0) {
+				return (
+					<View
 						key={idx}
-						style={styles.wordInput}
-						placeholder={"Practice Word"}
-						onChangeText={text => this.updateText(text, idx)}
-						/>
+						style={{flex: 0, flexDirection: 'row', justifyContent: 'center'}}
+						ref="wordInput">
+						<TextInput
+							key={idx}
+							style={styles.wordInput}
+							placeholder={"Practice Word"}
+							onChangeText={text => this.updateText(text, idx)}
+							/>
 					</View>
-			);
+				);
+			} else {
+				return (
+					<View
+						key={idx}
+						style={{flex: 0, flexDirection: 'row', justifyContent: 'center'}}>
+						<TextInput
+							key={idx}
+							style={styles.wordInput}
+							placeholder={"Practice Word"}
+							onChangeText={text => this.updateText(text, idx)}
+							/>
+					</View>
+				);
+			}
 
 		});
 
