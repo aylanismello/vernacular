@@ -24,9 +24,9 @@ const LANGUAGES = {
 class DeckForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.deleteFirstDeck = this.deleteFirstDeck.bind(this);
-		let deck = new Array(5).fill("");
-		this.state = {deck, title: '', to: 'Chinese', height: 650};
+		// this.deleteFirstDeck = this.deleteFirstDeck.bind(this);
+		let deck = new Array(1).fill("");
+		this.state = {deck, title: '', to: 'Japanese', height: 650};
 	}
 
 	updateText(text, idx) {
@@ -45,10 +45,10 @@ class DeckForm extends React.Component {
 		this.setState({to: language});
 	}
 
-	deleteFirstDeck(e) {
-		e.preventDefault();
-		this.props.deleteDeck(this.props.decks[0]._id);
-	}
+	// deleteFirstDeck(e) {
+	// 	e.preventDefault();
+	// 	this.props.deleteDeck(this.props.decks[0]._id);
+	// }
 
 	_handlePress() {
 		const requestBody = {
@@ -75,14 +75,12 @@ class DeckForm extends React.Component {
 		);
 
 		let deck = this.state.deck.map((word, idx) => {
-			let placeholder = `word ${idx}!`;
 			return (
-				<View key={idx}>
-					<Text>{placeholder} </Text>
+				<View key={idx} style={{flex: 0, flexDirection: 'row', justifyContent: 'center'}}>
 					<TextInput
 						key={idx}
-						style={{height: 40}}
-						placeholder={placeholder}
+						style={styles.wordInput}
+						placeholder={"Practice Word"}
 						onChangeText={text => this.updateText(text, idx)}
 						/>
 					</View>
@@ -92,8 +90,13 @@ class DeckForm extends React.Component {
 
 		return(
 				<ScrollView
-					contentContainerStyle={{marginLeft: 15, flex: 1, height: this.state.height}}>
+					contentContainerStyle={{
+						marginLeft: 15,
+						marginRight: 15,
+						flex: 1,
+						height: this.state.height}}>
 					{title}
+					<Text style={styles.languagePrompt}>Select the language you want to practice:</Text>
 					<PickerIOS
 						selectedValue={this.state.to}
 						onValueChange={(language) => this.updateTo(language)}>
@@ -105,6 +108,7 @@ class DeckForm extends React.Component {
 							/>
 						))}
 					</PickerIOS>
+					<Text style={styles.wordsPrompt}>Enter words that you want translated:</Text>
 					{deck}
 					<Button
 					style={{fontSize: 20, color: '#607d8b'}}
@@ -112,7 +116,6 @@ class DeckForm extends React.Component {
 					onPress={() => this._handlePress()}>
 						Press Me!
 					</Button>
-					<Button onPress={this.deleteFirstDeck}>Delete First Deck</Button>
 				</ScrollView>
 		);
 	}
@@ -136,6 +139,26 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderColor: "#ccc",
 		borderRadius: 5
+	},
+	languagePrompt: {
+		padding: 3,
+		marginTop: 5,
+		fontSize: 14,
+		color: "#4891C0"
+	},
+	wordsPrompt: {
+		padding: 3,
+		fontSize: 14,
+		color: "#4891C0"
+	},
+	wordInput: {
+		height: 40,
+		borderColor: "#ccc",
+		borderWidth: 1,
+		borderRadius: 5,
+		padding: 5,
+		width: 250,
+		margin: 5
 	}
 });
 
