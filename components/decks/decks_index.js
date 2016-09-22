@@ -10,14 +10,22 @@ import {
 } from 'react-native';
 import Button from 'react-native-button';
 import DeckMenuContainer from '../deck_menu/deck_menu_container';
+import Orientation from 'react-native-orientation';
+import DeckMenu from '../deck_menu/deck_menu';
 import DeckFormContainer from '../deck_form/deck_form_container';
+
 
 class DecksIndex extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      orientation: Orientation.getInitialOrientation()
+    };
+
     this._redirectToCreateDeck = this._redirectToCreateDeck.bind(this);
     this._redirectToDeck = this._redirectToDeck.bind(this);
+    this._orientationDidChange = this._orientationDidChange.bind(this);
   }
 
   _redirectToCreateDeck() {
@@ -27,6 +35,19 @@ class DecksIndex extends React.Component {
   _redirectToDeck(idx, deck) {
     this.props.nav.push({component: DeckMenuContainer, title: deck.title});
     this.props.updateDeckIdx(idx);
+  }
+
+  _orientationDidChange(orientation) {
+    this.setState({orientation: orientation});
+  }
+
+  componentDidMount() {
+    Orientation.unlockAllOrientations();
+    Orientation.addOrientationListener(this._orientationDidChange);
+  }
+
+  componentWillUnmount() {
+    Orientation.removeOrientationListener(this._orientationDidChange);
   }
 
   render() {
@@ -40,9 +61,18 @@ class DecksIndex extends React.Component {
         );
       });
 
+      let scrollViewStyle;
+
+      if (this.state.orientation === "LANDSCAPE") {
+        scrollViewStyle = styles.containerLandscape;
+      } else {
+        scrollViewStyle = styles.container;
+      }
+
       return (
-        <View>
-          <ScrollView contentContainerStyle={styles.container}>
+        <View style={{flex: 1}}>
+          <ScrollView
+            contentContainerStyle={scrollViewStyle}>
             {decksArr}
           </ScrollView>
           <View style={styles.addDeckButtonContainer}>
@@ -76,10 +106,17 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#D4E9F2',
-    height: 500
+    height: 530
+  },
+  containerLandscape: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#D4E9F2',
+    height: 285
   },
   appHeader: {
     fontSize: 20,
@@ -104,19 +141,23 @@ const styles = StyleSheet.create({
     fontSize: 12
   },
   indexDeckContainer: {
-    margin: 5
+    flex: 1
   },
   addDeckButtonContainer: {
     flex: 0,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    bottom: 0
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    bottom: 0,
+    marginTop: 3
   },
   addDeck: {
-    backgroundColor: '#fff',
+    backgroundColor: '#4891C0',
+    color: "#fff",
     width: 100,
     padding: 5,
-    marginRight: 5
+    marginRight: 5,
+    borderRadius: 5
   },
   instructions: {
     textAlign: 'center',
