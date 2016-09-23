@@ -26,13 +26,14 @@ class DeckForm extends React.Component {
 	constructor(props) {
 		super(props);
 		let deck = new Array(1).fill("");
-		this.state = {deck, title: '', to: 'Japanese', height: 600, postDisabled: true};
+		this.state = {deck, title: '', to: 'Japanese', height: 600};
 
 		this.updateText = this.updateText.bind(this);
 		this.updateTitle = this.updateTitle.bind(this);
 		this.updateTo = this.updateTo.bind(this);
 		this._addMoreWordsInput = this._addMoreWordsInput.bind(this);
 		this._handlePress = this._handlePress.bind(this);
+		this.validateInputs = this.validateInputs.bind(this);
 	}
 
 	updateText(text, idx) {
@@ -76,6 +77,20 @@ class DeckForm extends React.Component {
 		this.props.submitDeck(requestBody);
 	}
 
+	validateInputs() {
+		if (this.state.title === "") {
+			return false;
+		}
+
+		let valid = true;
+		this.state.deck.forEach((input) => {
+			if (input === "") {
+				valid = false;
+			}
+		});
+
+		return valid;
+	}
 
 	render() {
 		let title = (
@@ -122,6 +137,11 @@ class DeckForm extends React.Component {
 
 		});
 
+		let postDisabled = true;
+		if (this.validateInputs()) {
+			postDisabled = false;
+		}
+
 		return(
 				<ScrollView
 					contentContainerStyle={{
@@ -152,7 +172,8 @@ class DeckForm extends React.Component {
 					<Button
 						style={{fontSize: 20, color: '#607d8b'}}
 						styleDisabled={{color: 'red'}}
-						onPress={() => this._handlePress()}>
+						onPress={() => this._handlePress()}
+						disabled={postDisabled}>
 						Press Me!
 					</Button>
 				</ScrollView>
