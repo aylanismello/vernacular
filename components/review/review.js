@@ -37,14 +37,14 @@ class Review extends React.Component {
         return (
           <View key={index} style={styles.cardView}>
           <Text style={styles.cardWord}>{card.dest}</Text>
-          <Button onPress={this._flipCard}>Flip</Button>
+          <Button onPress={this._flipCard} style={styles.flipButton}>Flip</Button>
           </View>
         );
       } else if (this.state.language === "source") {
         return (
           <View key={index} style={styles.cardView}>
           <Text style={styles.cardWord}>{card.source}</Text>
-          <Button onPress={this._flipCard}>Flip</Button>
+          <Button onPress={this._flipCard} style={styles.flipButton}>Flip</Button>
           </View>
         );
       }
@@ -75,6 +75,14 @@ const styles = StyleSheet.create({
   cardWord: {
     color: "#4891C0",
     fontSize: 48
+  },
+  flipButton: {
+    marginTop: 30,
+    backgroundColor: '#4891C0',
+    color: "#fff",
+    padding: 8,
+    fontSize: 20,
+    borderRadius: 5
   }
 });
 
