@@ -16,6 +16,7 @@ class Review extends React.Component {
     };
 
     this._flipCard = this._flipCard.bind(this);
+    this._resetDest = this._resetDest.bind(this);
   }
 
   _flipCard() {
@@ -24,6 +25,10 @@ class Review extends React.Component {
     } else if (this.state.language === "source") {
       this.setState({language: "dest"});
     }
+  }
+
+  _resetDest() {
+    this.setState({language: "dest"});
   }
 
   render() {
@@ -46,7 +51,9 @@ class Review extends React.Component {
     });
 
     return (
-      <Swiper contentContainerStyle={styles.wrapper}>
+      <Swiper
+        contentContainerStyle={styles.wrapper}
+        onScrollBeginDrag={this._resetDest}>
         {cardSlides}
       </Swiper>
     );
