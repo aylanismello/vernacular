@@ -30,8 +30,18 @@ class Game extends React.Component {
 
 		// game logic. then if we go to next card..
 		// console.log(arg);
-		debugger;
-		this._isCorrectChoice(choice);
+
+		// console.log(this._isCorrectChoice(choice));
+
+		if (this._isCorrectChoice(choice))
+			this.props.addCorrect();
+
+		if (this.props.gameDeck.length > 1){
+			this._goToNextWord();
+		} else {
+			console.log('go to results!');
+		}
+
 		// this._goToNextWord();
 		// now what we do is run game logic
 	}
@@ -52,7 +62,8 @@ class Game extends React.Component {
 
 	_goToNextWord() {
 		let word = _.sample(this.props.gameDeck).dest;
-		this.setState({word});
+		// this.setState({word});
+		this.props.setWord(word);
 		this.props.removeWord(word);
 	}
 
@@ -114,29 +125,19 @@ const styles = StyleSheet.create({
 	},
 	choicesContainer: {
 		backgroundColor: "blue",
-		flex: 5,
 		flexDirection: "column",
-		justifyContent: "space-between"
+		justifyContent: "center",
+		alignItems: "center",
+		flex: 1
 	},
 	choiceContainer: {
 		width: 200,
-		margin: 50,
-		backgroundColor: "white",
-		flex: 10,
+		height: 50,
+		backgroundColor: "white"
 
 	},
 	choice: {
-		textAlign: "center",
-		flex: 1
-	},
-	titleInput: {
-		flex: 1,
-		height: 40,
-		padding: 5,
-		width: 250,
-		borderWidth: 1,
-		borderColor: "#ccc",
-		borderRadius: 5
+		textAlign: "center"
 	}
 });
 

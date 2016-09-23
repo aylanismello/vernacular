@@ -3,14 +3,17 @@ import * as _ from 'lodash';
 
 const defaultGame = Object.freeze({
   deck: [],
-  word: ""
+  word: "",
+  correctCount: 0
 });
 
 const GameReducer = (state=defaultGame, action) => {
   let newState;
   // debugger;
   switch (action.type) {
-
+    case GameConstants.ADD_CORRECT:
+      newState = _.merge({}, state, {correctCount: state.correctCount + 1});
+      return newState;
     case GameConstants.INIT_GAME_DECK:
       newState = _.merge({}, state, {deck: action.deck});
       return newState;

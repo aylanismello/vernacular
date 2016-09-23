@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import Game from './game';
 import { initGameDeck,
 	removeWord,
- 	setWord} from '../../actions/game_actions';
+ 	setWord,
+	addCorrect } from '../../actions/game_actions';
 
 const mapStateToProps = (state, ownProps) => {
 	let deckIdx = state.deck.deckIdx;
@@ -27,7 +28,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
 	initGameDeck: deck => dispatch(initGameDeck(deck)),
 	removeWord: word => dispatch(removeWord(word)),
-	setWord: word => dispatch(setWord(word))
+	setWord: word => dispatch(setWord(word)),
+	addCorrect: () => dispatch(addCorrect())
 });
 
 
