@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import Button from 'react-native-button';
 import DeckIndexContainer from '../deck_menu/deck_menu_container';
+import GameResultsContainer from './game_results_container';
 import * as _ from 'underscore';
 
 
@@ -28,17 +29,16 @@ class Game extends React.Component {
 
 	_handleChoice(choice) {
 
-		// game logic. then if we go to next card..
-		// console.log(arg);
-
-		// console.log(this._isCorrectChoice(choice));
-
 		if (this._isCorrectChoice(choice))
 			this.props.addCorrect();
 
-		if (this.props.gameDeck.length > 1){
+		if (this.props.gameDeck.length > 0){
 			this._goToNextWord();
 		} else {
+			this.props.nav.push(
+				{component: GameResultsContainer,
+					title: "Results"});
+
 			console.log('go to results!');
 		}
 

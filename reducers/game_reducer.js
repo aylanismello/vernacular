@@ -15,7 +15,8 @@ const GameReducer = (state=defaultGame, action) => {
       newState = _.merge({}, state, {correctCount: state.correctCount + 1});
       return newState;
     case GameConstants.INIT_GAME_DECK:
-      newState = _.merge({}, state, {deck: action.deck});
+      newState = _.merge({}, state, {deck: action.deck, correctCount: 0});
+      // reset correctCount
       return newState;
 		case GameConstants.REMOVE_WORD:
 			newState = _.merge({}, state);
