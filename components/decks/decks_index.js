@@ -42,7 +42,8 @@ class DecksIndex extends React.Component {
   }
 
   componentDidMount() {
-    Orientation.unlockAllOrientations();
+    // Orientation.unlockAllOrientations();
+    Orientation.lockToPortrait();
     Orientation.addOrientationListener(this._orientationDidChange);
   }
 
@@ -61,12 +62,14 @@ class DecksIndex extends React.Component {
         );
       });
 
-      let scrollViewStyle;
+      let scrollViewStyle, addDeckButtonContainerStyle;
 
       if (this.state.orientation === "LANDSCAPE") {
         scrollViewStyle = styles.containerLandscape;
+        addDeckButtonContainerStyle = styles.addDeckButtonContainerLandscape;
       } else {
         scrollViewStyle = styles.container;
+        addDeckButtonContainerStyle = styles.addDeckButtonContainer;
       }
 
       return (
@@ -75,7 +78,7 @@ class DecksIndex extends React.Component {
             contentContainerStyle={scrollViewStyle}>
             {decksArr}
           </ScrollView>
-          <View style={styles.addDeckButtonContainer}>
+          <View style={addDeckButtonContainerStyle}>
             <Button style={styles.addDeck} onPress={this._redirectToCreateDeck}>+Add Deck</Button>
           </View>
         </View>
@@ -145,12 +148,20 @@ const styles = StyleSheet.create({
     margin: 5
   },
   addDeckButtonContainer: {
-    flex: 0,
+    flex: 0.1,
+    backgroundColor: "#fff",
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    bottom: 0,
-    marginTop: 3
+    bottom: 0
+  },
+  addDeckButtonContainerLandscape: {
+    flex: 0.1,
+    backgroundColor: "#fff",
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    bottom: 245
   },
   addDeck: {
     backgroundColor: '#4891C0',
