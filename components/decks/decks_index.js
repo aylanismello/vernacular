@@ -56,7 +56,10 @@ class DecksIndex extends React.Component {
         return (
           <View key={index} style={styles.indexDeckContainer}>
             <Text style={styles.deckHeader}>{deck.title}</Text>
-            <Button style={styles.practiceLink} onPress={this._redirectToDeck.bind(this, index, deck)}>Practice</Button>
+            <Button style={styles.practiceLink}
+              onPress={this._redirectToDeck.bind(this, index, deck)}>
+              {deck.deck.length} words
+            </Button>
           </View>
         );
       });
