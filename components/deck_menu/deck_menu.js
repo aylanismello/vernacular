@@ -6,12 +6,14 @@ import {
 import Swiper from 'react-native-swiper';
 import Button from 'react-native-button';
 import SettingsContainer from '../settings/settings_container';
+import ReviewContainer from '../review/review_container';
 
 class DeckMenu extends React.Component {
   constructor(props) {
     super(props);
 
     this._redirectToSettings = this._redirectToSettings.bind(this);
+    this._redirectToReview = this._redirectToReview.bind(this);
 
     this.state = {
       cards: this.props.deck[0],    // Need to shuffle and get the deck
@@ -23,12 +25,16 @@ class DeckMenu extends React.Component {
     this.props.nav.push({component: SettingsContainer, title: "Settings"});
   }
 
+  _redirectToReview() {
+    this.props.nav.push({component: ReviewContainer, title: "Review"});
+  }
+
   render() {
     return (
       <View style={{marginTop: 50}}>
         <Text>This is the deck!</Text>
         <Button>Play</Button>
-        <Button>Review</Button>
+        <Button onPress={this._redirectToReview}>Review</Button>
         <Button onPress={this._redirectToSettings}>Settings</Button>
       </View>
     );

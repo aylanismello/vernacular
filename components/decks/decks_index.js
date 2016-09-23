@@ -141,7 +141,8 @@ const styles = StyleSheet.create({
     fontSize: 12
   },
   indexDeckContainer: {
-    flex: 1
+    flex: 1,
+    margin: 5
   },
   addDeckButtonContainer: {
     flex: 0,
