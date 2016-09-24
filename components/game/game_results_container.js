@@ -6,8 +6,10 @@ const mapStateToProps = state => {
 
 	let deck = state.deck.decks[state.deck.deckIdx].deck;
 	let incorrectCount = deck.length - correctCount;
+	let deckTitle = state.deck.decks[state.deck.deckIdx].title;
 
 	return {
+		deckTitle,
 		correctCount,
 		incorrectCount,
 		nav: state.nav.nav

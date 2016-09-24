@@ -5,6 +5,7 @@ import {
 	View } from 'react-native';
 import Button from 'react-native-button';
 import GameContainer from './game_container';
+import DeckMenuContainer from '../deck_menu/deck_menu_container';
 
 class GameResults extends React.Component{
 
@@ -17,6 +18,11 @@ class GameResults extends React.Component{
 		this.props.nav.push({component: GameContainer, title: "Play"});
 	}
 
+	_redirectToDeckMenu() {
+		this.props.nav.push(
+			{component: DeckMenuContainer,
+				title: this.props.deckTitle});
+	}
 
 	render() {
 		return (
@@ -34,6 +40,9 @@ class GameResults extends React.Component{
 					<View>
 						<Button onPress={this._redirectToPlay.bind(this)}>
 							Play Again
+						</Button>
+						<Button onPress={this._redirectToDeckMenu.bind(this)}>
+							Done
 						</Button>
 					</View>
 
