@@ -175,6 +175,8 @@ class DeckForm extends React.Component {
 						onPress={() => this._handlePress()}
 						disabled={postDisabled}>
 						Press Me!
+						onPress={() => this._handlePress()}>
+						Create Deck
 					</Button>
 				</ScrollView>
 		);
