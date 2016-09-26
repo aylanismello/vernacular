@@ -153,7 +153,7 @@ class DeckForm extends React.Component {
 						style={{fontSize: 20, color: '#607d8b'}}
 						styleDisabled={{color: 'red'}}
 						onPress={() => this._handlePress()}>
-						Press Me!
+						Create Deck
 					</Button>
 				</ScrollView>
 		);
