@@ -14,23 +14,23 @@ Made by Aylan Mello and [Davin Kim](https://github.com/Davinism)
 
 ### Background
 
-There are many apps out there for reviewing vocabulary flashcards. My app specializes on short review bursts (limit of card sets === 5). Additionally, my app is focused on foreign language vocabulary.
+There are many apps out there for reviewing vocabulary flashcards. Our app specializes on short review bursts of foreign language vocabulary.
 
 ### Functionality & MVP
 
 With this IOS app, users will be able to
 
-- [ ] Create new vocabulary word sets (up to 5 words to a set)
+- [ ] Create new vocabulary word sets (up to 10 words to a set)
 - [ ] Add these to the community words sets
 - [ ] Review their own and others' words
 
 ### Wireframes
 
-<img src="./wireframes/1.png" width="300">
+<img src="./wireframes/home_screen.png" width="300">
 
-<img src="./wireframes/2.png" width="300">
+<img src="./wireframes/add_deck.png" width="300">
 
-<img src="./wireframes/3.png" width="300">
+<img src="./wireframes/flash_card.png" width="300">
 
 ### Technologies & Technical Challenges
 
@@ -66,12 +66,6 @@ This app will be implemented using React Native to bridge the gap between the we
 
 Side technologies:
 - YANDEX API for translation
-
-
-#### Primary Technical Challenges
-- Making the proper AJAX request without JQuery (React Native has no notion of a DOM so that's not an option)
-- Chaining a user's POST request for a new words list to a translation API to persist complete POST request in DB.
-- Making app feel smooths in words review mode.
 
 
 ### Implementation Timeline
