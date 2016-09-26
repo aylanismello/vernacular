@@ -21,7 +21,7 @@ const Root = ({store}) => (
       titleTextColor="#4891C0"
       initialRoute={{
         component: AppContainer,
-        title: "Semper"
+        title: "Vernacular"
       }}
       style={{flex: 1}}
     />
