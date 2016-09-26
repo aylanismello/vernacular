@@ -75,10 +75,23 @@ class DecksIndex extends React.Component {
         addDeckButtonContainerStyle = styles.addDeckButtonContainer;
       }
 
+      let scrollHeight;
+      if (this.props.decks.length <= 6) {
+        scrollHeight = 530;
+      } else {
+        scrollHeight = 530 + 90 * (this.props.decks.length - 6);
+      }
+
       return (
         <View style={{flex: 1}}>
           <ScrollView
-            contentContainerStyle={scrollViewStyle}>
+            contentContainerStyle={{
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#D4E9F2',
+              height: scrollHeight
+            }}>
             {decksArr}
           </ScrollView>
           <View style={addDeckButtonContainerStyle}>
@@ -143,8 +156,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     textAlign: 'center',
     color: '#35CD80',
-    padding: 3,
-    fontSize: 12
+    padding: 5,
+    fontSize: 14
   },
   indexDeckContainer: {
     flex: 1,
@@ -169,7 +182,7 @@ const styles = StyleSheet.create({
   addDeck: {
     backgroundColor: '#4891C0',
     color: "#fff",
-    width: 100,
+    width: 250,
     padding: 5,
     marginRight: 5,
     borderRadius: 5

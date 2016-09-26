@@ -1,7 +1,9 @@
 import React from 'react';
 import {
   Text,
-  View
+  View,
+  StyleSheet,
+  TouchableHighlight
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import Button from 'react-native-button';
@@ -38,15 +40,37 @@ class DeckMenu extends React.Component {
 
   render() {
     return (
-      <View style={{marginTop: 50}}>
-        <Text>This is the deck!</Text>
-        <Button>Play</Button>
-        <Button onPress={this._redirectToReview}>Review</Button>
-        <Button onPress={this._redirectToPlay}>Play</Button>
-        <Button onPress={this._redirectToSettings}>Settings</Button>
+      <View style={styles.menuContainer}>
+        <Button style={styles.menuButton}>Play</Button>
+        <Button
+          onPress={this._redirectToReview}
+          style={styles.menuButton}>Review</Button>
+        <Button
+          onPress={this._redirectToSettings}
+          style={styles.menuButton}>Settings</Button>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  menuContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  menuButton: {
+    flex: 1,
+    backgroundColor: '#35CD80',
+    width: 200,
+    padding: 5,
+    fontSize: 20,
+    margin: 10,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    color: "#fff"
+  }
+});
 
 export default DeckMenu;

@@ -38,7 +38,6 @@ const AJAXD = (id, success, error=err) => {
 	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
 	xhr.send(null);
-	debugger;
 
 	xhr.onreadystatechange = () => {
 		let DONE = 4; //
@@ -61,6 +60,5 @@ export const getDecks = (success) => {
 };
 
 export const deleteDeck = (deckId, success) => {
-	debugger;
 	AJAXD(deckId, success);
 };
