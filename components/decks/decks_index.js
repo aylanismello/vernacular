@@ -6,7 +6,8 @@ import {
   StyleSheet,
   ScrollView,
   ListView,
-  Navigator
+  Navigator,
+  TouchableHighlight
 } from 'react-native';
 import Button from 'react-native-button';
 import DeckMenuContainer from '../deck_menu/deck_menu_container';
@@ -55,13 +56,18 @@ class DecksIndex extends React.Component {
     if (this.props.decks) {
       const decksArr = this.props.decks.map((deck, index) => {
         return (
-          <View key={index} style={styles.indexDeckContainer}>
-            <Text style={styles.deckHeader}>{deck.title}</Text>
-            <Button style={styles.practiceLink}
-              onPress={this._redirectToDeck.bind(this, index, deck)}>
-              {deck.deck.length} words
-            </Button>
-          </View>
+          <TouchableHighlight
+            key={index}
+            underlayColor={"#D4E9F2"}
+            style={styles.indexDeckContainer}
+            onPress={this._redirectToDeck.bind(this, index, deck)}>
+            <View>
+              <Text style={styles.deckHeader}>{deck.title}</Text>
+              <Text style={styles.practiceLink}>
+                {deck.deck.length} words
+              </Text>
+            </View>
+          </TouchableHighlight>
         );
       });
 
@@ -86,7 +92,7 @@ class DecksIndex extends React.Component {
         <View style={{flex: 1}}>
           <ScrollView
             contentContainerStyle={{
-              flex: 1,
+              flex: 0.9,
               alignItems: 'center',
               justifyContent: 'center',
               backgroundColor: '#D4E9F2',

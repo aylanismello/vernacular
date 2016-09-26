@@ -20,7 +20,7 @@ class DeckMenu extends React.Component {
     this._redirectToPlay = this._redirectToPlay.bind(this);
 
     this.state = {
-      cards: this.props.deck[0],    // Need to shuffle and get the deck
+      cards: this.props.deck[0],
       currentIdx: 0
     };
   }
