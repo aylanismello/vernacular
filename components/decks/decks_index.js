@@ -153,8 +153,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     textAlign: 'center',
     color: '#35CD80',
-    padding: 3,
-    fontSize: 12
+    padding: 5,
+    fontSize: 14
   },
   indexDeckContainer: {
     flex: 1,
