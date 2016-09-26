@@ -41,7 +41,9 @@ class DeckMenu extends React.Component {
   render() {
     return (
       <View style={styles.menuContainer}>
-        <Button style={styles.menuButton}>Play</Button>
+        <Button
+          onPress={this._redirectToPlay}
+          style={styles.menuButton}>Play</Button>
         <Button
           onPress={this._redirectToReview}
           style={styles.menuButton}>Review</Button>
