@@ -1,9 +1,8 @@
-## Words
+## Vernacular
 
 #### //Running App for Development
 
-- `npm install --save`
-- `node server/index.js`
+- `npm install`
 - `react-native run-ios --simulator`
 
 Install react-native if you haven't already
