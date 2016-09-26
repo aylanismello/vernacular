@@ -22,6 +22,8 @@ const LANGUAGES = {
 	Spanish: "es"
 };
 
+const NUM_CARDS_LIMIT = 10;
+
 class DeckForm extends React.Component {
 	constructor(props) {
 		super(props);
@@ -32,6 +34,7 @@ class DeckForm extends React.Component {
 		this.updateTitle = this.updateTitle.bind(this);
 		this.updateTo = this.updateTo.bind(this);
 		this._addMoreWordsInput = this._addMoreWordsInput.bind(this);
+		this._removeMoreWordsInput = this._removeMoreWordsInput.bind(this);
 		this._handlePress = this._handlePress.bind(this);
 		this.validateInputs = this.validateInputs.bind(this);
 	}
@@ -61,6 +64,19 @@ class DeckForm extends React.Component {
 		currentDeck.push("");
 		this.refs.wordInput.measure((x, y, width, height, pageX, pageY) => {
 			this.setState({height: this.state.height + height});
+		});
+		this.setState({deck: currentDeck});
+	}
+
+	_removeMoreWordsInput(event) {
+		event.preventDefault();
+		const currentDeck = [];
+		this.state.deck.forEach((word) => {
+			currentDeck.push(word);
+		});
+		currentDeck.pop();
+		this.refs.wordInput.measure((x, y, width, height, pageX, pageY) => {
+			this.setState({height: this.state.height - height});
 		});
 		this.setState({deck: currentDeck});
 	}
@@ -142,6 +158,37 @@ class DeckForm extends React.Component {
 			postDisabled = false;
 		}
 
+		let buttons;
+
+		if (this.state.deck.length > 1 && this.state.deck.length < NUM_CARDS_LIMIT) {
+			buttons = (
+				<View style={styles.moreWordsContainer}>
+					<Button
+						style={styles.moreWords}
+						onPress={(event) => this._addMoreWordsInput(event)}>+</Button>
+					<Button
+						style={styles.moreWords}
+						onPress={(event) => this._removeMoreWordsInput(event)}>-</Button>
+				</View>
+			);
+		} else if (this.state.deck.length >= NUM_CARDS_LIMIT) {
+			buttons = (
+				<View style={styles.moreWordsContainer}>
+					<Button
+						style={styles.moreWords}
+						onPress={(event) => this._removeMoreWordsInput(event)}>-</Button>
+				</View>
+			);
+		} else {
+			buttons = (
+				<View style={styles.moreWordsContainer}>
+					<Button
+						style={styles.moreWords}
+						onPress={(event) => this._addMoreWordsInput(event)}>+</Button>
+				</View>
+			);
+		}
+
 		return(
 				<ScrollView
 					contentContainerStyle={{
@@ -164,17 +211,13 @@ class DeckForm extends React.Component {
 					</PickerIOS>
 					<Text style={styles.wordsPrompt}>Enter words that you want translated:</Text>
 					{deck}
-					<View style={styles.moreWordsContainer}>
-						<Button
-							style={styles.moreWords}
-							onPress={(event) => this._addMoreWordsInput(event)}>+</Button>
-					</View>
+					{buttons}
 					<Button
-						style={{fontSize: 20, color: '#607d8b'}}
-						styleDisabled={{color: 'red'}}
+						style={styles.submit}
+						styleDisabled={styles.submitDisabled}
 						onPress={() => this._handlePress()}
 						disabled={postDisabled}>
-						Press Me!
+						Create!
 					</Button>
 				</ScrollView>
 		);
@@ -231,7 +274,20 @@ const styles = StyleSheet.create({
 		width: 50,
 		paddingBottom: 8,
 		fontSize: 30,
-		borderRadius: 5
+		borderRadius: 5,
+		margin: 5
+	},
+	submit: {
+		fontSize: 20,
+		color: '#fff',
+		backgroundColor: "#35CD80",
+		padding: 10,
+		borderRadius: 5,
+		margin: 10
+	},
+	submitDisabled: {
+		color: '#fff',
+		backgroundColor: "#eee",
 	}
 });
 

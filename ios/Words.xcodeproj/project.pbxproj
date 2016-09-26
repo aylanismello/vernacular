@@ -21,7 +21,6 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		7423784D1D92F39F00C05443 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7423784C1D92F39E00C05443 /* Default-568h@2x.png */; };
-		74F223E31D8F5A230069EEFB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74F223E21D8F5A230069EEFB /* Info.plist */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		A8FCDF9ACA6A45198D590028 /* libRCTOrientation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351563E73F8140F08CBE10B2 /* libRCTOrientation.a */; };
 /* End PBXBuildFile section */
@@ -341,11 +340,11 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 610;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = LX7FMQ6F6K;
+						DevelopmentTeam = D7RX9G9DPB;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -502,7 +501,6 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				7423784D1D92F39F00C05443 /* Default-568h@2x.png in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				74F223E31D8F5A230069EEFB /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,8 +575,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.aylan.words;
+				PRODUCT_BUNDLE_IDENTIFIER = io.aylan.vernacular;
 				PRODUCT_NAME = Words;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -608,8 +607,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.aylan.words;
+				PRODUCT_BUNDLE_IDENTIFIER = io.aylan.vernacular;
 				PRODUCT_NAME = Words;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -633,6 +633,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
