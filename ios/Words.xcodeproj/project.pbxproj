@@ -130,6 +130,7 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		E973F61E55074E3EBB9A1289 /* RCTOrientation.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTOrientation.xcodeproj; path = "../node_modules/react-native-orientation/iOS/RCTOrientation.xcodeproj"; sourceTree = "<group>"; };
+		F5E8C3F41D99161000DD0D9B /* RussoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RussoOne-Regular.ttf"; path = "../../../../Downloads/Russo_One/RussoOne-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +287,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				F5E8C3E81D99111200DD0D9B /* Fonts */,
 				7423784C1D92F39E00C05443 /* Default-568h@2x.png */,
 				74F223E21D8F5A230069EEFB /* Info.plist */,
 				13B07FAE1A68108700A75B9A /* Words */,
@@ -303,6 +305,14 @@
 				13B07F961A680F5B00A75B9A /* Words.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F5E8C3E81D99111200DD0D9B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F5E8C3F41D99161000DD0D9B /* RussoOne-Regular.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		F5EF11F41D9411B0009A1768 /* Products */ = {

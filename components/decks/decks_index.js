@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
   addDeck: {
     backgroundColor: '#4891C0',
     color: "#fff",
-    width: 100,
+    width: 250,
     padding: 5,
     marginRight: 5,
     borderRadius: 5
