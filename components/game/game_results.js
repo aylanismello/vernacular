@@ -6,12 +6,22 @@ import {
 import Button from 'react-native-button';
 import GameContainer from './game_container';
 import DeckMenuContainer from '../deck_menu/deck_menu_container';
+import DecksIndexContainer from '../decks/decks_index_container';
 
 class GameResults extends React.Component{
 
 	constructor(props) {
 		super(props);
 		this.state = {height: 400};
+
+		this._redirectToDecksIndex = this._redirectToDecksIndex.bind(this);
+	}
+
+	componentDidMount() {
+		this.props.nav.replacePrevious({
+			component: DeckMenuContainer,
+			title: this.props.deckTitle
+		});
 	}
 
 	_redirectToPlay() {
@@ -22,6 +32,14 @@ class GameResults extends React.Component{
 		this.props.nav.push(
 			{component: DeckMenuContainer,
 				title: this.props.deckTitle});
+	}
+
+	_redirectToDecksIndex() {
+		this.props.nav.push({
+			component: DecksIndexContainer,
+			title: "Vernacular",
+			leftButtonTitle: " "
+		});
 	}
 
 	render() {
@@ -41,7 +59,7 @@ class GameResults extends React.Component{
 						<Button onPress={this._redirectToPlay.bind(this)}>
 							Play Again
 						</Button>
-						<Button onPress={this._redirectToDeckMenu.bind(this)}>
+						<Button onPress={this._redirectToDecksIndex}>
 							Done
 						</Button>
 					</View>

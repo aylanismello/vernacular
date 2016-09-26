@@ -44,6 +44,7 @@ class DecksIndex extends React.Component {
 
   componentDidMount() {
     // Orientation.unlockAllOrientations();
+    this.props.nav.popToTop(0);
     Orientation.lockToPortrait();
     Orientation.addOrientationListener(this._orientationDidChange);
   }
