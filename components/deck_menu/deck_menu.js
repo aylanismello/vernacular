@@ -10,6 +10,7 @@ import Button from 'react-native-button';
 import SettingsContainer from '../settings/settings_container';
 import ReviewContainer from '../review/review_container';
 import GameContainer from '../game/game_container';
+import DecksIndexContainer from '../decks/decks_index_container';
 
 class DeckMenu extends React.Component {
   constructor(props) {
@@ -23,6 +24,13 @@ class DeckMenu extends React.Component {
       cards: this.props.deck[0],
       currentIdx: 0
     };
+  }
+
+  componentDidMount() {
+    // this.props.nav.replacePrevious({
+    //   component: DecksIndexContainer,
+    //   title: "Vernacular"
+    // });
   }
 
   _redirectToSettings() {

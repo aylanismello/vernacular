@@ -8,6 +8,7 @@ import { initGameDeck,
 const mapStateToProps = (state, ownProps) => {
 	let deckIdx = state.deck.deckIdx;
 	let deck = state.deck.decks[deckIdx].deck;
+	let deckTitle = state.deck.decks[deckIdx].title;
 
 	let gameDeck = state.game.deck;
 
@@ -21,7 +22,8 @@ const mapStateToProps = (state, ownProps) => {
 		words,
 		deck,
 		gameDeck,
-		word
+		word,
+		deckTitle
 	};
 };
 

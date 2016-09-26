@@ -37,7 +37,8 @@ class Game extends React.Component {
 		} else {
 			this.props.nav.push(
 				{component: GameResultsContainer,
-					title: "Results"});
+					title: "Results",
+					leftButtonTitle: " "});
 
 			console.log('go to results!');
 		}
