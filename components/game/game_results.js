@@ -7,6 +7,7 @@ import Button from 'react-native-button';
 import GameContainer from './game_container';
 import DeckMenuContainer from '../deck_menu/deck_menu_container';
 import DecksIndexContainer from '../decks/decks_index_container';
+import DeckFormContainer from '../deck_form/deck_form_container';
 
 class GameResults extends React.Component{
 
@@ -38,7 +39,12 @@ class GameResults extends React.Component{
 		this.props.nav.push({
 			component: DecksIndexContainer,
 			title: "Vernacular",
-			leftButtonTitle: " "
+			leftButtonTitle: " ",
+			rightButtonTitle: "+Add Deck",
+      onRightButtonPress: () => this.props.nav.push({
+        component: DeckFormContainer,
+        title: "Create Deck"
+      })
 		});
 	}
 

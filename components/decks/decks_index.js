@@ -7,7 +7,8 @@ import {
   ScrollView,
   ListView,
   Navigator,
-  TouchableHighlight
+  TouchableHighlight,
+  Dimensions
 } from 'react-native';
 import Button from 'react-native-button';
 import DeckMenuContainer from '../deck_menu/deck_menu_container';
@@ -44,14 +45,15 @@ class DecksIndex extends React.Component {
 
   componentDidMount() {
     // Orientation.unlockAllOrientations();
+    this.props.getDecks();
     this.props.nav.popToTop(0);
     Orientation.lockToPortrait();
-    Orientation.addOrientationListener(this._orientationDidChange);
+    // Orientation.addOrientationListener(this._orientationDidChange);
   }
 
-  componentWillUnmount() {
-    Orientation.removeOrientationListener(this._orientationDidChange);
-  }
+  // componentWillUnmount() {
+  //   Orientation.removeOrientationListener(this._orientationDidChange);
+  // }
 
   render() {
     if (this.props.decks) {
@@ -82,29 +84,24 @@ class DecksIndex extends React.Component {
         addDeckButtonContainerStyle = styles.addDeckButtonContainer;
       }
 
-      let scrollHeight;
+      let scrollHeight, bottom;
       if (this.props.decks.length <= 6) {
-        scrollHeight = 530;
+        scrollHeight = Dimensions.get('window').height;
       } else {
-        scrollHeight = 530 + 90 * (this.props.decks.length - 6);
+        scrollHeight = Dimensions.get('window').height;
       }
 
       return (
-        <View style={{flex: 1}}>
-          <ScrollView
-            contentContainerStyle={{
-              flex: 0.9,
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: '#D4E9F2',
-              height: scrollHeight
-            }}>
-            {decksArr}
-          </ScrollView>
-          <View style={addDeckButtonContainerStyle}>
-            <Button style={styles.addDeck} onPress={this._redirectToCreateDeck}>+Add Deck</Button>
-          </View>
-        </View>
+        <ScrollView
+          contentContainerStyle={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#D4E9F2',
+            height: scrollHeight
+          }}>
+          {decksArr}
+        </ScrollView>
       );
     } else {
       return (
@@ -175,7 +172,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
     bottom: 0
   },
   addDeckButtonContainerLandscape: {
@@ -191,7 +187,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     width: 250,
     padding: 5,
-    marginRight: 5,
+    margin: 5,
     borderRadius: 5
   },
   instructions: {
