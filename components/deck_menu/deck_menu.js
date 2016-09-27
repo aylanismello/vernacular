@@ -17,21 +17,14 @@ class DeckMenu extends React.Component {
     super(props);
 
     this._redirectToSettings = this._redirectToSettings.bind(this);
+
+    this._handleDeckDelete = this._handleDeckDelete.bind(this);
     this._redirectToReview = this._redirectToReview.bind(this);
     this._redirectToPlay = this._redirectToPlay.bind(this);
 
-    this.state = {
-      cards: this.props.deck[0],
-      currentIdx: 0
-    };
+    this.deckMongoId = this.props.deck._id;
   }
 
-  componentDidMount() {
-    // this.props.nav.replacePrevious({
-    //   component: DecksIndexContainer,
-    //   title: "Vernacular"
-    // });
-  }
 
   _redirectToSettings() {
     this.props.nav.push({component: SettingsContainer, title: "Settings"});
@@ -45,6 +38,11 @@ class DeckMenu extends React.Component {
     this.props.nav.push({component: GameContainer, title: "Play"});
   }
 
+  _handleDeckDelete() {
+    this.props.deleteDeck(this.deckMongoId);
+    this.props.nav.push({component: DecksIndexContainer, title: 'Decks'});
+  }
+
 
   render() {
     return (
@@ -56,8 +54,8 @@ class DeckMenu extends React.Component {
           onPress={this._redirectToReview}
           style={styles.menuButton}>Review</Button>
         <Button
-          onPress={this._redirectToSettings}
-          style={styles.menuButton}>Settings</Button>
+          onPress={this._handleDeckDelete}
+          style={styles.menuButton}>Delete</Button>
       </View>
     );
   }
