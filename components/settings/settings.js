@@ -17,22 +17,32 @@ class Settings extends React.Component {
       currentIdx: 0
     };
 
+
+    this.deckMongoId = this.props.decks[this.props.deckIdx]._id;
+
   }
 
 	_handleDeckDelete() {
-		this.props.deleteDeck(this.props.deckMongoId);
+		this.props.deleteDeck(this.deckMongoId);
+    // this.props.updateDeckIdx(0);
 		this.props.nav.push({component: DecksIndexContainer, title: 'Decks'});
 	}
 
 
   render() {
+
     return (
       <View style={{marginTop: 50}}>
         <Text>This is the deck!</Text>
         <View style={styles.addDeckButtonContainer}>
-          <Button style={styles.addDeck} onPress={this._handleDeckDelete}>Delete Deck</Button>
+          <Button style={styles.addDeck}
+            onPress={this._handleDeckDelete}>
+            Delete Deck
+          </Button>
         </View>
-        <Button>Edit This Deck</Button>
+        <Button style={styles.addDeck}>
+          Edit This Deck
+        </Button>
       </View>
     );
   }

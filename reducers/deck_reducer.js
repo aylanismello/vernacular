@@ -22,8 +22,10 @@ const DeckReducer = (state=defaultDeck, action) => {
 			return newState;
 		case DeckConstants.REMOVE_DECK:
 			newState = _.merge({}, state);
+			debugger;
 			let delIdx = state.decks.findIndex(deck => deck._id === action.deckId);
 			newState.decks.splice(delIdx, 1);
+			debugger;
 			return newState;
 		default:
 			return state;
