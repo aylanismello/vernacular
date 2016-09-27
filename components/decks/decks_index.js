@@ -45,15 +45,14 @@ class DecksIndex extends React.Component {
 
   componentDidMount() {
     // Orientation.unlockAllOrientations();
-    this.props.getDecks();
     this.props.nav.popToTop(0);
     Orientation.lockToPortrait();
-    // Orientation.addOrientationListener(this._orientationDidChange);
+    Orientation.addOrientationListener(this._orientationDidChange);
   }
 
-  // componentWillUnmount() {
-  //   Orientation.removeOrientationListener(this._orientationDidChange);
-  // }
+  componentWillUnmount() {
+    Orientation.removeOrientationListener(this._orientationDidChange);
+  }
 
   render() {
     if (this.props.decks) {
@@ -84,24 +83,29 @@ class DecksIndex extends React.Component {
         addDeckButtonContainerStyle = styles.addDeckButtonContainer;
       }
 
-      let scrollHeight, bottom;
+      let scrollHeight;
       if (this.props.decks.length <= 6) {
         scrollHeight = Dimensions.get('window').height;
       } else {
-        scrollHeight = Dimensions.get('window').height;
+        scrollHeight = Dimensions.get('window').height + 90 * (this.props.decks.length - 6);
       }
 
       return (
-        <ScrollView
-          contentContainerStyle={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#D4E9F2',
-            height: scrollHeight
-          }}>
-          {decksArr}
-        </ScrollView>
+        <View style={{flex: 1}}>
+          <ScrollView
+            contentContainerStyle={{
+              flex: 0.95,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#D4E9F2',
+              height: scrollHeight
+            }}>
+            {decksArr}
+          </ScrollView>
+          <View style={addDeckButtonContainerStyle}>
+            <Button style={styles.addDeck} onPress={this._redirectToCreateDeck}>+Add Deck</Button>
+          </View>
+        </View>
       );
     } else {
       return (
@@ -168,14 +172,15 @@ const styles = StyleSheet.create({
     margin: 5
   },
   addDeckButtonContainer: {
-    flex: 0.1,
+    flex: 0.05,
     backgroundColor: "#fff",
     flexDirection: 'column',
     alignItems: 'center',
-    bottom: 0
+    justifyContent: 'center',
+    bottom: -50
   },
   addDeckButtonContainerLandscape: {
-    flex: 0.1,
+    flex: 0.05,
     backgroundColor: "#fff",
     flexDirection: 'column',
     alignItems: 'center',
@@ -187,7 +192,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     width: 250,
     padding: 5,
-    margin: 5,
+    marginRight: 5,
     borderRadius: 5
   },
   instructions: {
