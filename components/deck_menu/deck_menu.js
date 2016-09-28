@@ -11,6 +11,7 @@ import SettingsContainer from '../settings/settings_container';
 import ReviewContainer from '../review/review_container';
 import GameContainer from '../game/game_container';
 import DecksIndexContainer from '../decks/decks_index_container';
+import DeckFormContainer from '../deck_form/deck_form_container';
 
 class DeckMenu extends React.Component {
   constructor(props) {
@@ -40,7 +41,16 @@ class DeckMenu extends React.Component {
 
   _handleDeckDelete() {
     this.props.deleteDeck(this.deckMongoId);
-    this.props.nav.push({component: DecksIndexContainer, title: 'Decks'});
+    this.props.nav.push({
+      component: DecksIndexContainer,
+      title: 'Vernacular',
+      leftButtonTitle: " ",
+      rightButtonTitle: "+Add Deck",
+      onRightButtonPress: () => this.props.nav.push({
+        component: DeckFormContainer,
+        title: "Create Deck"
+      })
+    });
   }
 
 
