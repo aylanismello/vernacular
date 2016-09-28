@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import Button from 'react-native-button';
 import DeckIndexContainer from '../decks/decks_index_container';
+import DeckFormContainer from './deck_form_container';
 
 const LANGUAGES = {
 	Chinese: "zh",
@@ -36,6 +37,7 @@ class DeckForm extends React.Component {
 		this._addMoreWordsInput = this._addMoreWordsInput.bind(this);
 		this._removeMoreWordsInput = this._removeMoreWordsInput.bind(this);
 		this._handlePress = this._handlePress.bind(this);
+		this._addDeck = this._addDeck.bind(this);
 		this.validateInputs = this.validateInputs.bind(this);
 	}
 
@@ -81,8 +83,21 @@ class DeckForm extends React.Component {
 		this.setState({deck: currentDeck});
 	}
 
+	_addDeck() {
+    this.props.nav.push({
+      component: DeckFormContainer,
+      title: "Create Deck"
+    });
+  }
+
 	_handlePress() {
-		this.props.nav.push({component: DeckIndexContainer});
+		this.props.nav.push({
+			component: DeckIndexContainer,
+			title: "Vernacular",
+			leftButtonTitle: " ",
+			rightButtonTitle: "+Add Deck",
+			onRightButtonPress: () => this._addDeck()
+		});
 
 		const requestBody = {
 			deck: this.state.deck,

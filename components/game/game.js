@@ -6,7 +6,8 @@ import {
 	StyleSheet,
 	PickerIOS,
 	ScrollView,
-	Dimensions
+	Dimensions,
+	TouchableHighlight
 } from 'react-native';
 import Button from 'react-native-button';
 import DeckIndexContainer from '../deck_menu/deck_menu_container';
@@ -23,7 +24,7 @@ class Game extends React.Component {
 		// GAME STATE:
 		// WORDS
 		// get funtionality where words are removed from words in state
-		this.state = {height: 600};
+		this.state = {height: 400};
 
 	}
 
@@ -86,20 +87,21 @@ class Game extends React.Component {
 
 		let choices = this.props.choices.map((choice, idx) => {
 			return (
-				<View style={styles.choiceContainer} key={idx}>
-					<Button style={styles.choice}
-						key={choice}
-						onPress={this._handleChoice.bind(null, choice)}>
-						{choice}</Button>
-				</View>
+				<TouchableHighlight
+					style={styles.choiceContainer}
+					key={idx}
+					onPress={this._handleChoice.bind(null, choice)}>
+					<View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
+						<Text style={styles.choice}>
+							{choice}</Text>
+					</View>
+				</TouchableHighlight>
 			);
 		});
 
 		return(
 				<ScrollView
 					contentContainerStyle={{
-						marginLeft: 15,
-						marginRight: 15,
 						flex: 1,
 						height: this.state.height}}>
 					{title}
@@ -125,7 +127,7 @@ const styles = StyleSheet.create({
 		height: 200
 	},
 	choicesContainer: {
-		backgroundColor: "blue",
+		backgroundColor: "#eee",
 		flexDirection: "column",
 		justifyContent: "center",
 		alignItems: "center",
@@ -134,11 +136,16 @@ const styles = StyleSheet.create({
 	choiceContainer: {
 		width: 200,
 		height: 50,
-		backgroundColor: "white"
-
+		backgroundColor: "#fff",
+		margin: 10,
+		borderRadius: 5,
+		borderWidth: 1,
+		borderColor: "#ccc"
 	},
 	choice: {
-		textAlign: "center"
+		textAlign: "center",
+		color: "#4891C0",
+		fontSize: 20
 	}
 });
 

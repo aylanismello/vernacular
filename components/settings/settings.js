@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import Button from 'react-native-button';
 import DecksIndexContainer from '../decks/decks_index_container';
+import DeckFormContainer from '../deck_form/deck_form_container';
 
 class Settings extends React.Component {
   constructor(props) {
@@ -24,8 +25,16 @@ class Settings extends React.Component {
 
 	_handleDeckDelete() {
 		this.props.deleteDeck(this.deckMongoId);
-    // this.props.updateDeckIdx(0);
-		this.props.nav.push({component: DecksIndexContainer, title: 'Decks'});
+		this.props.nav.push({
+      component: DecksIndexContainer,
+      title: 'Vernacular',
+      leftButtonTitle: " ",
+      rightButtonTitle: "+Add Deck",
+      onRightButtonPress: () => this.props.nav.push({
+        component: DeckFormContainer,
+        title: "Create Deck"
+      })
+    });
 	}
 
 

@@ -7,7 +7,8 @@ import {
   ScrollView,
   ListView,
   Navigator,
-  TouchableHighlight
+  TouchableHighlight,
+  Dimensions
 } from 'react-native';
 import Button from 'react-native-button';
 import DeckMenuContainer from '../deck_menu/deck_menu_container';
@@ -84,16 +85,16 @@ class DecksIndex extends React.Component {
 
       let scrollHeight;
       if (this.props.decks.length <= 6) {
-        scrollHeight = 530;
+        scrollHeight = Dimensions.get('window').height;
       } else {
-        scrollHeight = 530 + 90 * (this.props.decks.length - 6);
+        scrollHeight = Dimensions.get('window').height + 90 * (this.props.decks.length - 6);
       }
 
       return (
         <View style={{flex: 1}}>
           <ScrollView
             contentContainerStyle={{
-              flex: 0.9,
+              flex: 0.95,
               alignItems: 'center',
               justifyContent: 'center',
               backgroundColor: '#D4E9F2',
@@ -171,15 +172,15 @@ const styles = StyleSheet.create({
     margin: 5
   },
   addDeckButtonContainer: {
-    flex: 0.1,
+    flex: 0.05,
     backgroundColor: "#fff",
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    bottom: 0
+    bottom: -50
   },
   addDeckButtonContainerLandscape: {
-    flex: 0.1,
+    flex: 0.05,
     backgroundColor: "#fff",
     flexDirection: 'column',
     alignItems: 'center',
